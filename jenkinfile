@@ -1,0 +1,32 @@
+#! groovy
+
+node {
+
+  def jdkHome
+  def mvnHome
+
+  def gitShortCommitID = null
+  
+  // Prepare the build environment
+  stage('Build Environment') {
+    jdkHome = installTool "<jdk1.8.0_141>"
+    mvnHome = installTool "<apache-maven-3.3.9>"
+  }
+  
+  // Get the source code
+  stage('Source') {
+    git branch: 'dev', credentialsId: '<username>', url: '<http/gitpath/to/project>'
+	  gitShortCommitID = gitCommitShortHash() 
+    notifyStash()    // it will notify bitbucket or notifyBitbucket()
+  }
+  
+// Compile the Code
+  stage('Build'){
+    withEnv(["JAVA_HOME=${jdkHome}", "MAVEN_HOME=${mvnHome}", "PATH+MAVEN=${mvnHome}/bin"]) {
+      artifactoryMaven {
+        goals = '-X clean compile'
+        deploy_artifacts = false
+      }
+    }
+  }
+  
