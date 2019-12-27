@@ -20,5 +20,5 @@ node {
     notifyStash()    // it will notify bitbucket or notifyBitbucket()
   }
   
-
+}
   
