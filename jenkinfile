@@ -16,17 +16,9 @@ node {
   // Get the source code
   stage('Source') {
     git branch: 'dev', credentialsId: '<username>', url: '<http/gitpath/to/project>'
-	  gitShortCommitID = gitCommitShortHash() 
+	 gitShortCommitID = gitCommitShortHash() 
     notifyStash()    // it will notify bitbucket or notifyBitbucket()
   }
   
-// Compile the Code
-  stage('Build'){
-    withEnv(["JAVA_HOME=${jdkHome}", "MAVEN_HOME=${mvnHome}", "PATH+MAVEN=${mvnHome}/bin"]) {
-      artifactoryMaven {
-        goals = '-X clean compile'
-        deploy_artifacts = false
-      }
-    }
-  }
+
   
