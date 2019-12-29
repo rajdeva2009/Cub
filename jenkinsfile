@@ -1,20 +1,9 @@
 #! groovy
 
 node {
-
-  def jdkHome
-  def mvnHome
-
-  def gitShortCommitID = null
-  
-  // Prepare the build environment
-  stage('Build Environment') {
-    jdkHome = installTool "<jdk1.8.0_141>"
-    mvnHome = installTool "<apache-maven-3.3.9>"
-  }
-  
+	
   // Get the source code
-  stage('Source') {
+  stage('checkout') {
     git branch: 'dev', url: 'https://github.com/rajdeva2009/Cub.git'
 	 gitShortCommitID = gitCommitShortHash() 
     notifyStash()    // it will notify bitbucket or notifyBitbucket()
