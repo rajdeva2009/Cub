@@ -15,7 +15,7 @@ node {
   
   // Get the source code
   stage('Source') {
-    git branch: 'dev', credentialsId: '<username>', url: '<http/gitpath/to/project>'
+    git branch: 'dev', url: 'https://github.com/rajdeva2009/Cub.git'
 	 gitShortCommitID = gitCommitShortHash() 
     notifyStash()    // it will notify bitbucket or notifyBitbucket()
   }
