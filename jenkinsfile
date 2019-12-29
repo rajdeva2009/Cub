@@ -3,9 +3,24 @@
 node {
 	
   // Get the source code
-  stage('checkout') {
+ stage('checkout') {
     checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rajdeva2009/Cub.git']]])
   }
   
+  // Build the code
+ stage('build') {
+   }
+	
+ // test the code
+ stage('test') {
+   }
+
+// upload to artifact
+ stage('upload') {
+   }
+// deploy code
+ stage('deploy') {
+	}
+
 }
   
