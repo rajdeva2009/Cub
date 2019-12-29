@@ -9,17 +9,21 @@ node {
   
   // Build the code
  stage('build') {
+	 echo "Build"
    }
 	
  // test the code
  stage('test') {
+	 echo "test"
    }
 
 // upload to artifact
  stage('upload') {
+	 echo "upload"
    }
 // deploy code
  stage('deploy') {
+	 echo "deploy"
 	}
 
 }
