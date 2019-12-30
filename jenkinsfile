@@ -18,6 +18,7 @@ node {
             bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
          }
       }
+	 
    }
 	
  // test the code
@@ -27,8 +28,12 @@ node {
 
 // upload to artifact
  stage('upload') {
-	 echo "upload"
+	uploadToArtifactory {
+		pattern = ''
+		target = ""
+	}	
    }
+	
 // deploy code
  stage('deploy') {
 	 echo "deploy"
