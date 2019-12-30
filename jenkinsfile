@@ -23,13 +23,21 @@ node {
 	
  // test the code
  stage('test') {
-	 echo "test"
+	 
+	steps {
+                sh 'mvn test' 
+            }
+        post {
+                always {
+                    junit 'target/surefire-reports/*.xml' 
+                }
+            }
    }
 
 // upload to artifact
  stage('upload') {
 	uploadToArtifactory {
-		pattern = ''
+		pattern = 'target/*.jar'
 		target = ""
 	}	
    }
