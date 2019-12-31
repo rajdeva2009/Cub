@@ -14,16 +14,8 @@ node {
 	
  // test the code
  stage('test') {
-	 
-	steps {
-                sh 'mvn test' 
-            }
-        post {
-                always {
-                    junit 'target/surefire-reports/*.xml' 
+        junit 'target/surefire-reports/*.xml' 
                 }
-            }
-   }
 
 // upload to artifact
  stage('upload') {
