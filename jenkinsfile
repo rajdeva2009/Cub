@@ -1,7 +1,6 @@
 #! groovy
 
 node {
-# def mvnhome
   // Get the source code
  stage('checkout') {
     checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rajdeva2009/Cub.git']]])
@@ -9,7 +8,6 @@ node {
   
   // Build the code
  stage('build') {	 
-# mvnhome = tool 'Maven'
       // Run the maven build
      withEnv() {
          if (isUnix()) {
