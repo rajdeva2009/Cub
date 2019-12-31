@@ -18,12 +18,15 @@ node {
                 }
 
 // upload to artifact
- stage('upload') {
-	uploadToArtifactory {
-		pattern = "target/*.jar"
-		target = "example-repo-local"
-	}	
-   }
+	stage('upload') {
+	def uploadSpec = {
+  "files": [ {
+      "pattern": "*.jar",
+      "target": "example-repo-local"
+    }
+ ]
+}
+server.upload(uploadSpec)
 	
 // deploy code
  stage('deploy') {
