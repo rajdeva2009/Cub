@@ -28,8 +28,8 @@ node {
 // upload to artifact
  stage('upload') {
 	uploadToArtifactory {
-		pattern = 'target/*.jar'
-		target = ""
+		pattern = "target/*.jar"
+		target = "example-repo-local"
 	}	
    }
 	
