@@ -1,3 +1,5 @@
+#! groovy
+
 node {
     def server = Artifactory.server 'JFrog'
     def rtMaven = Artifactory.newMavenBuild()
