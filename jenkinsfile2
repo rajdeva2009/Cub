@@ -25,5 +25,13 @@ node {
         buildInfo.name = 'test-J2file'
         buildInfo.number = 'v1'
         server.publishBuildInfo buildInfo
-    }
+     }
+    stage ('ENV') {
+        withenv() {
+            sh "printenv"
+            echo ${env.BUILD_NUMBER}
+            echo env.JOB_URL
+            print(env.JOB_URL)
+          }
+       }
 }
