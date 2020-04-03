@@ -10,7 +10,7 @@ node {
     }
 
     stage ('Artifactory configuration') {
-        rtMaven.tool = Maven // Tool name from Jenkins configuration
+        rtMaven.tool = m3 // Tool name from Jenkins configuration
         rtMaven.deployer releaseRepo: 'example-repo-local', snapshotRepo: 'example-repo-local', server: server
         rtMaven.resolver releaseRepo: 'example-repo-local', snapshotRepo: 'example-repo-local', server: server
         rtMaven.deployer.deployArtifacts = true
