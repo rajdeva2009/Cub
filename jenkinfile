@@ -19,3 +19,4 @@ node('<nodelable>') {
 	  gitShortCommitID = gitCommitShortHash() 
     notifyStash()    // it will notify bitbucket or notifyBitbucket()
   }
+}
